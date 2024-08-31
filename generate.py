@@ -146,10 +146,14 @@ def trace_next_pt(island_num, path, search_dir):
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
-    ap.add_argument("-i", "--image", required = True, help = "Path to the image")
-    ap.add_argument("-c", "--max-colors", required = True, type = int, help = "Max number of distinct colors")
-    ap.add_argument("-s", "--min-brush-size", required = True, type = int)
-    ap.add_argument("-n", "--name-suffix", required = True, help = "File names suffix")
+    # ap.add_argument("-i", "--image", required = True, help = "Path to the image", default="./examples/boy.jpeg")
+    # ap.add_argument("-c", "--max-colors", required = True, type = int, help = "Max number of distinct colors", default=16)
+    # ap.add_argument("-s", "--min-brush-size", required = True, type = int,default=16)
+    # ap.add_argument("-n", "--name-suffix", required = True, help = "File names suffix",default="test")
+    ap.add_argument("-i", "--image", required=False, help="Path to the image", default="./examples/boy.jpeg")
+    ap.add_argument("-c", "--max-colors", required=False, type=int, help="Max number of distinct colors", default=16)
+    ap.add_argument("-s", "--min-brush-size", required=False, type=int, default=16)
+    ap.add_argument("-n", "--name-suffix", required=False, help="File names suffix", default="test")
     ap.add_argument("-f", "--scale-factor", required = False, type = int, default = 1, help = "Scale multiplier between input image and paint-by-number canvas")
     args = vars(ap.parse_args())
 
@@ -255,4 +259,8 @@ if __name__ == '__main__':
     #cv2.imshow("traced", paint_by_number)
     #cv2.imshow("color_sheet", color_sheet)
     #cv2.imshow("preview", preview)
-    #cv2.waitKey(0)
+    cv2.waitKey(0)
+
+
+#.\generate.py -i .\examples\boy.jpeg -c 16 -s 16 -n test
+#main()
